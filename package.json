@@ -8,6 +8,7 @@
   "author": "bye-shuvo",
   "license": "ISC",
   "description": "An advance authentication system for mordern websites.",
+  "type": "module",
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
