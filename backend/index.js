@@ -8,7 +8,7 @@ const app = express();
 
 app.use("/v1/api/auth" , authRoutes);
 
-app.listen(3000 , () => {
-    console.log("Server started at the port : " , 3000);
+app.listen(process.env.PORT || 5000 , () => {
+    console.log("Server started at the port : " , process.env.PORT);
     connectDB();
 })
