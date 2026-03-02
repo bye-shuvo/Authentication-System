@@ -42,7 +42,30 @@ export const signup = async (req, res) => {
 };
 
 export const verifyEmail = async (req , res) => {
-  
+  const { token } = req.body;
+  try {
+    const user = await User.findOne({
+        verificationToken : token , 
+        verificationTokenExpiresAt : {$gt : Date.now()}
+    })
+
+    if(!user){
+      return res.status(400).json({success : false , message : "Invalid or expired verification token"});
+    }
+
+    user.isVerified = true ;
+    user.verificationToken = undefined ;
+    user.verificationTokenExpiresAt = undefined ;
+    await user.save();
+    
+    res.status(200).json({success : true , message : "Email verified successfully" , user : {
+      ...user._doc , password : undefined
+    }});
+
+  } catch (error) {
+    console.log("Error while verifying email" , error.message);
+    return res.status(400).json({success : false , message : "Error while verifying email" , error : error.message});
+  }
 }
 
 export const login = async (req, res) => {
