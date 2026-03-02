@@ -1,6 +1,6 @@
 import { User } from "../database/models/user.model.js";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
-import { sendVerificationEmail } from "../mailtrap/emails.js";
+import { sendVerificationEmail , sendWelcomeEmail } from "../mailtrap/emails.js";
 import bcrypt from "bcryptjs";
 
 export const signup = async (req, res) => {
@@ -61,6 +61,8 @@ export const verifyEmail = async (req , res) => {
     res.status(200).json({success : true , message : "Email verified successfully" , user : {
       ...user._doc , password : undefined
     }});
+
+    await sendWelcomeEmail(user.email, user.name);
 
   } catch (error) {
     console.log("Error while verifying email" , error.message);
