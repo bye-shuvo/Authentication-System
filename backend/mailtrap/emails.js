@@ -9,7 +9,7 @@ export const sendVerificationEmail = async (email, token) => {
       to: recipient,
       subject: "Verify your email",
       category: "Email Verification",
-      html: EMAIL_VERIFICATION_TEMPLATE.replace("{verificationToken}", token),
+      html: EMAIL_VERIFICATION_TEMPLATE.replace("{verification_Token}", token).replace("{company_name}" , sender.name),
     });
   } catch (error) {
     console.error("Error verificaiton email", error.message);
