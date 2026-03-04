@@ -50,12 +50,10 @@ export const verifyEmail = async (req, res) => {
     });
 
     if (!user) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Invalid or expired verification token",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Invalid or expired verification token",
+      });
     }
 
     user.isVerified = true;
@@ -82,13 +80,43 @@ export const verifyEmail = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  res.send("Login successful");
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user)
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid credentials" });
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid)
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid credentials" });
+     
+    if(!user.isVerified) return res
+        .status(400)
+        .json({ success: false, message: "Verify your email first" });
+
+    generateTokenAndSetCookie(res, user._id);
+
+    user.lastLogin = new Date();
+
+    res.status(200).json({
+      success: true,
+      message: "User logged in successfully",
+      user: { ...user._doc, password: undefined },
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
 };
 export const logout = async (req, res) => {
   try {
     res.clearCookie("token");
     res.status(200).json({ success: true, message: "Logged out successfully" });
   } catch (error) {
-    return res.status(500).json({success : false , message : error.message});
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
