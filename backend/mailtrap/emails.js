@@ -22,7 +22,7 @@ export const sendWelcomeEmail = async (email, name) => {
     await client.send({
       from: sender,
       to: receiver,
-      html : WELCOME_EMAIL_TEMPLATE.replace("{user_name}" , name).replace("{company_name}" , sender.name);
+      html : WELCOME_EMAIL_TEMPLATE.replace("{user_name}" , name).replace("{company_name}" , sender.name)
     });
   } catch (error) {
     console.log("Error while sending welcome email" , error.message);
