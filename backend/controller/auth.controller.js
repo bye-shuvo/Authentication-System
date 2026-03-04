@@ -1,6 +1,6 @@
 import { User } from "../database/models/user.model.js";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
-import { sendVerificationEmail , sendWelcomeEmail } from "../mailtrap/emails.js";
+import { sendVerificationEmail, sendWelcomeEmail } from "../mailtrap/emails.js";
 import bcrypt from "bcryptjs";
 
 export const signup = async (req, res) => {
@@ -13,7 +13,9 @@ export const signup = async (req, res) => {
     if (userAlreadyExists) throw new Error("User already exists");
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const verificationToken = Math.round(100000 + Math.random() * 900000).toString();
+    const verificationToken = Math.round(
+      100000 + Math.random() * 900000,
+    ).toString();
     const user = new User({
       name,
       password: hashedPassword,
@@ -27,52 +29,66 @@ export const signup = async (req, res) => {
     //jwt generation and save cookie
     generateTokenAndSetCookie(res, user._id);
 
-    await sendVerificationEmail(user.email , verificationToken);
+    await sendVerificationEmail(user.email, verificationToken);
 
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: "User created successfully",
-        user: { ...user._doc , password: undefined },
-      });
+    res.status(201).json({
+      success: true,
+      message: "User created successfully",
+      user: { ...user._doc, password: undefined },
+    });
   } catch (error) {
     res.status(400).json({ success: false, message: error.message });
   }
 };
 
-export const verifyEmail = async (req , res) => {
+export const verifyEmail = async (req, res) => {
   const { token } = req.body;
   try {
     const user = await User.findOne({
-        verificationToken : token , 
-        verificationTokenExpiresAt : {$gt : Date.now()}
-    })
+      verificationToken: token,
+      verificationTokenExpiresAt: { $gt: Date.now() },
+    });
 
-    if(!user){
-      return res.status(400).json({success : false , message : "Invalid or expired verification token"});
+    if (!user) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "Invalid or expired verification token",
+        });
     }
 
-    user.isVerified = true ;
-    user.verificationToken = undefined ;
-    user.verificationTokenExpiresAt = undefined ;
+    user.isVerified = true;
+    user.verificationToken = undefined;
+    user.verificationTokenExpiresAt = undefined;
     await user.save();
-    
-    res.status(200).json({success : true , message : "Email verified successfully" , user : {
-      ...user._doc , password : undefined
-    }});
+
+    res.status(200).json({
+      success: true,
+      message: "Email verified successfully",
+      user: {
+        ...user._doc,
+        password: undefined,
+      },
+    });
 
     await sendWelcomeEmail(user.email, user.name);
-
   } catch (error) {
-    console.log("Error while verifying email" , error.message);
-    return res.status(500).json({success : false , message : "Internal Server Error"});
+    console.log("Error while verifying email", error.message);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal Server Error" });
   }
-}
+};
 
 export const login = async (req, res) => {
   res.send("Login successful");
 };
 export const logout = async (req, res) => {
-  res.send("Logout successful");
+  try {
+    res.clearCookie("token");
+    res.status(200).json({ success: true, message: "Logged out successfully" });
+  } catch (error) {
+    return res.status(500).json({success : false , message : error.message});
+  }
 };
