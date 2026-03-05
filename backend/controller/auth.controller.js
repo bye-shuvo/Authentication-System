@@ -94,8 +94,9 @@ export const login = async (req, res) => {
       return res
         .status(400)
         .json({ success: false, message: "Invalid credentials" });
-     
-    if(!user.isVerified) return res
+
+    if (!user.isVerified)
+      return res
         .status(400)
         .json({ success: false, message: "Verify your email first" });
 
@@ -112,6 +113,7 @@ export const login = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
+
 export const logout = async (req, res) => {
   try {
     res.clearCookie("token");
@@ -120,3 +122,7 @@ export const logout = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const forgotPassword = async (req , res) => {
+  
+}
