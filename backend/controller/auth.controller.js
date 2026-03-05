@@ -1,7 +1,9 @@
+import bcrypt from "bcryptjs";
+import crypto from "crypto";
+
 import { User } from "../database/models/user.model.js";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 import { sendVerificationEmail, sendWelcomeEmail } from "../mailtrap/emails.js";
-import bcrypt from "bcryptjs";
 
 export const signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -124,5 +126,16 @@ export const logout = async (req, res) => {
 };
 
 export const forgotPassword = async (req , res) => {
-  
+  const { email } = req.body ;
+  try {
+    const user = await User.findOne({email});
+
+    if(!user) return res.status(400).json({success : false , message : "User doesn't exists"});
+
+    const resetToken = crypto.randomBytes(20).toString("hex");
+
+    await sendResetPasswordEmail(user.email , `${CLIENT_URL}/${resetToken}`);
+  } catch (error) {
+    
+  }
 }
