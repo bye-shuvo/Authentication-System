@@ -349,3 +349,190 @@ text-decoration: none
 </td></tr></table>
 </td></tr></table></td></tr></table></div><div class="gmail-fix" style="display: none; white-space: nowrap; font: 15px courier; line-height: 0;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body>
 </html>`;
+
+export const RESET_PASSWORD_EMAIL_TEMPLATE = `<!--
+* This email was built using Tabular.
+* For more information, visit https://tabular.email
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en">
+<head>
+<title></title>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--[if !mso]>-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!--<![endif]-->
+<meta name="x-apple-disable-message-reformatting" content="" />
+<meta content="target-densitydpi=device-dpi" name="viewport" />
+<meta content="true" name="HandheldFriendly" />
+<meta content="width=device-width" name="viewport" />
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no" />
+<style type="text/css">
+table {
+border-collapse: separate;
+table-layout: fixed;
+mso-table-lspace: 0pt;
+mso-table-rspace: 0pt
+}
+table td {
+border-collapse: collapse
+}
+.ExternalClass {
+width: 100%
+}
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+line-height: 100%
+}
+body, a, li, p, h1, h2, h3 {
+-ms-text-size-adjust: 100%;
+-webkit-text-size-adjust: 100%;
+}
+html {
+-webkit-text-size-adjust: none !important
+}
+body {
+min-width: 100%;
+Margin: 0px;
+padding: 0px;
+}
+body, #innerTable {
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale
+}
+#innerTable img+div {
+display: none;
+display: none !important
+}
+img {
+Margin: 0;
+padding: 0;
+-ms-interpolation-mode: bicubic
+}
+h1, h2, h3, p, a {
+overflow-wrap: normal;
+white-space: normal;
+word-break: break-word
+}
+a {
+text-decoration: none
+}
+h1, h2, h3, p {
+min-width: 100%!important;
+width: 100%!important;
+max-width: 100%!important;
+display: inline-block!important;
+border: 0;
+padding: 0;
+margin: 0
+}
+a[x-apple-data-detectors] {
+color: inherit !important;
+text-decoration: none !important;
+font-size: inherit !important;
+font-family: inherit !important;
+font-weight: inherit !important;
+line-height: inherit !important
+}
+u + #body a {
+color: inherit;
+text-decoration: none;
+font-size: inherit;
+font-family: inherit;
+font-weight: inherit;
+line-height: inherit;
+}
+a[href^="mailto"],
+a[href^="tel"],
+a[href^="sms"] {
+color: inherit;
+text-decoration: none
+}
+</style>
+<style type="text/css">
+@media (min-width: 481px) {
+.hd { display: none!important }
+}
+</style>
+<style type="text/css">
+@media (max-width: 480px) {
+.hm { display: none!important }
+}
+</style>
+<style type="text/css">
+@media (max-width: 480px) {
+.t27,.t38,.t54{width:600px!important}.t43{padding:0 0 22px!important}.t28,.t39,.t55{text-align:center!important}.t38,.t54{vertical-align:top!important}.t27{vertical-align:middle!important}.t25{border-bottom-right-radius:0!important;border-bottom-left-radius:0!important;padding:30px!important}.t13,.t20,.t6{mso-line-height-alt:0!important;line-height:0!important;display:none!important}.t63{mso-line-height-alt:20px!important;line-height:20px!important}
+}
+</style>
+<!--[if !mso]>-->
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;800&amp;display=swap" rel="stylesheet" type="text/css" />
+<!--<![endif]-->
+<!--[if mso]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+</head>
+<body id="body" class="t66" style="min-width:100%;Margin:0px;padding:0px;background-color:#E0E0E0;"><div class="t65" style="background-color:#E0E0E0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td class="t64" style="font-size:0;line-height:0;mso-line-height-rule:exactly;background-color:#E0E0E0;" valign="top" align="center">
+<!--[if mso]>
+<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
+<v:fill color="#E0E0E0"/>
+</v:background>
+<![endif]-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" align="center" id="innerTable"><tr><td align="center">
+<table class="t46" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="566" class="t45" style="width:566px;">
+<table class="t44" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t43" style="padding:50px 10px 31px 10px;"><div class="t42" style="width:100%;text-align:center;"><div class="t41" style="display:inline-block;"><table class="t40" role="presentation" cellpadding="0" cellspacing="0" align="center" valign="top">
+<tr class="t39"><td></td><td class="t38" width="546" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="t37" style="width:100%;"><tr><td class="t36" style="background-color:transparent;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100% !important;"><tr><td align="center">
+<table class="t35" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="546" class="t34" style="width:600px;">
+<table class="t33" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t32"><div class="t31" style="width:100%;text-align:center;"><div class="t30" style="display:inline-block;"><table class="t29" role="presentation" cellpadding="0" cellspacing="0" align="center" valign="middle">
+<tr class="t28"><td></td><td class="t27" width="546" valign="middle">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="t26" style="width:100%;"><tr><td class="t25" style="border:1px solid #000;overflow:hidden;background-color:#F8F8F8;padding:40px 50px 40px 50px;border-radius:0 0 18px 18px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100% !important;"><tr><td align="left">
+<table class="t4" role="presentation" cellpadding="0" cellspacing="0" style="Margin-right:auto;"><tr><td width="444" class="t3" style="width:505px;">
+<table class="t2" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t1" style="overflow:hidden;background-color:#00FA85;border-radius:10px 10px 10px 10px;"><h1 class="t0" style="margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:41px;font-weight:800;font-style:normal;font-size:30px;text-decoration:none;text-transform:none;letter-spacing:-1.56px;direction:ltr;color:#000;text-align:center;mso-line-height-rule:exactly;mso-text-raise:3px;">Forgot your password?<br/>It happens to the best of us.</h1></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t6" style="mso-line-height-rule:exactly;mso-line-height-alt:14px;line-height:14px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="left">
+<table class="t10" role="presentation" cellpadding="0" cellspacing="0" style="Margin-right:auto;"><tr><td width="444" class="t9" style="width:563px;">
+<table class="t8" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t7"><p class="t5" style="margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:14px;text-decoration:none;text-transform:none;letter-spacing:-0.56px;direction:ltr;color:#333333;text-align:left;mso-line-height-rule:exactly;mso-text-raise:2px;">To reset your password, click the button below. The link will self-destruct after one days.</p></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t11" style="mso-line-height-rule:exactly;mso-line-height-alt:15px;line-height:15px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td><div class="t13" style="mso-line-height-rule:exactly;mso-line-height-alt:14px;line-height:14px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="center">
+<table class="t17" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="318" class="t16" style="width:318px;">
+<table class="t15" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t14" style="overflow:hidden;background-color:#586CE0;text-align:center;line-height:44px;mso-line-height-rule:exactly;mso-text-raise:10px;border-radius:40px 40px 40px 40px;"><a class="t12" href="{reset_password_url}" style="display:block;margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:44px;font-weight:800;font-style:normal;font-size:12px;text-decoration:none;text-transform:uppercase;letter-spacing:2.4px;direction:ltr;color:#FFFFFF;text-align:center;mso-line-height-rule:exactly;mso-text-raise:10px;" target="_blank">Reset password</a></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t18" style="mso-line-height-rule:exactly;mso-line-height-alt:15px;line-height:15px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td><div class="t20" style="mso-line-height-rule:exactly;mso-line-height-alt:14px;line-height:14px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr><tr><td align="left">
+<table class="t24" role="presentation" cellpadding="0" cellspacing="0" style="Margin-right:auto;"><tr><td width="444" class="t23" style="width:563px;">
+<table class="t22" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t21"><p class="t19" style="margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:14px;text-decoration:none;text-transform:none;letter-spacing:-0.56px;direction:ltr;color:#333333;text-align:left;mso-line-height-rule:exactly;mso-text-raise:2px;">If you have any questions or need further assistance, please do not hesitate to contact our support team by replying to this email or visiting our support page.</p></td></tr></table>
+</td></tr></table>
+</td></tr></table></td></tr></table>
+</td>
+<td></td></tr>
+</table></div></div></td></tr></table>
+</td></tr></table>
+</td></tr></table></td></tr></table>
+</td>
+<td></td></tr>
+</table></div></div></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td align="center">
+<table class="t62" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="600" class="t61" style="width:600px;">
+<table class="t60" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t59"><div class="t58" style="width:100%;text-align:center;"><div class="t57" style="display:inline-block;"><table class="t56" role="presentation" cellpadding="0" cellspacing="0" align="center" valign="top">
+<tr class="t55"><td></td><td class="t54" width="600" valign="top">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="t53" style="width:100%;"><tr><td class="t52" style="padding:0 50px 0 50px;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100% !important;"><tr><td align="center">
+<table class="t51" role="presentation" cellpadding="0" cellspacing="0" style="Margin-left:auto;Margin-right:auto;"><tr><td width="420" class="t50" style="width:420px;">
+<table class="t49" role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;"><tr><td class="t48"><p class="t47" style="margin:0;Margin:0;font-family:Albert Sans,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;line-height:22px;font-weight:500;font-style:normal;font-size:12px;text-decoration:none;text-transform:none;direction:ltr;color:#888888;text-align:center;mso-line-height-rule:exactly;mso-text-raise:3px;">© {company_name} All Rights Reserved<br/></p></td></tr></table>
+</td></tr></table>
+</td></tr></table></td></tr></table>
+</td>
+<td></td></tr>
+</table></div></div></td></tr></table>
+</td></tr></table>
+</td></tr><tr><td><div class="t63" style="mso-line-height-rule:exactly;mso-line-height-alt:50px;line-height:50px;font-size:1px;display:block;">&nbsp;&nbsp;</div></td></tr></table></td></tr></table></div><div class="gmail-fix" style="display: none; white-space: nowrap; font: 15px courier; line-height: 0;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div></body>
+</html>`

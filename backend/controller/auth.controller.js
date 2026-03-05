@@ -3,7 +3,7 @@ import crypto from "crypto";
 
 import { User } from "../database/models/user.model.js";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
-import { sendVerificationEmail, sendWelcomeEmail } from "../mailtrap/emails.js";
+import { sendVerificationEmail, sendWelcomeEmail , sendResetPasswordEmail } from "../mailtrap/emails.js";
 
 export const signup = async (req, res) => {
   const { name, email, password } = req.body;
@@ -131,11 +131,18 @@ export const forgotPassword = async (req , res) => {
     const user = await User.findOne({email});
 
     if(!user) return res.status(400).json({success : false , message : "User doesn't exists"});
-
-    const resetToken = crypto.randomBytes(20).toString("hex");
-
-    await sendResetPasswordEmail(user.email , `${CLIENT_URL}/${resetToken}`);
-  } catch (error) {
     
+    const resetToken = crypto.randomBytes(20).toString("hex");
+    
+    user.resetPasswordToken = resetToken ;
+    user.resetPasswordTokenExpiresAt = Date.now() + 1 * 24 * 60 * 60 * 1000 ;
+    await user.save();
+    
+    await sendResetPasswordEmail(user.email , `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
+
+    res.status(200).json({success : true , message : "Password reset link is sent to your email"});
+
+  } catch (error) {
+    return res.status(500).json({success : false , message : error.message});
   }
 }
