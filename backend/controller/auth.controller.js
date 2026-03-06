@@ -7,7 +7,7 @@ import {
   sendVerificationEmail,
   sendWelcomeEmail,
   sendResetPasswordEmail,
-  sendResetPasswordSuccessEmail
+  sendResetPasswordSuccessEmail,
 } from "../mailtrap/emails.js";
 
 export const signup = async (req, res) => {
@@ -151,41 +151,59 @@ export const forgotPassword = async (req, res) => {
       `${process.env.CLIENT_URL}/reset-password/${resetToken}`,
     );
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "Password reset link is sent to your email",
-      });
+    res.status(200).json({
+      success: true,
+      message: "Password reset link is sent to your email",
+    });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
 
 export const resetPassword = async (req, res) => {
-  const {token} = req.params ;
-  const {password} = req.body ;
+  const { token } = req.params;
+  const { password } = req.body;
 
   try {
     const user = await User.findOne({
-      resetPasswordToken : token ,
-      resetPasswordTokenExpiresAt : {$gt : Date.now()}
-    })
+      resetPasswordToken: token,
+      resetPasswordTokenExpiresAt: { $gt: Date.now() },
+    });
 
-    if(!user) return res.status(400).json({success : false , message : "Invalid or expired reset token"});
+    if (!user)
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid or expired reset token" });
 
-    const hashedPassword = await bcrypt.hash(password , 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-    user.password = hashedPassword ;
-    user.resetPasswordToken = undefined ;
+    user.password = hashedPassword;
+    user.resetPasswordToken = undefined;
     user.resetPasswordTokenExpiresAt = undefined;
 
     await user.save();
 
     await sendResetPasswordSuccessEmail(user.email);
 
-    res.status(200).json({success : true , message : "Password Reset Successfully"});    
+    res
+      .status(200)
+      .json({ success: true, message: "Password Reset Successfully" });
   } catch (error) {
-    return res.status(500).json({success : false , message : error.message});
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const checkAuth = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password");
+
+    if (!user)
+      return res
+        .status(400)
+        .json({ success: false, message: "User not found" });
+
+    res.status(200).json({ success: true, message: "User found!", user });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
   }
 };

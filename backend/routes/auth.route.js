@@ -1,18 +1,29 @@
-import express from 'express';
-import { signup , login , logout, verifyEmail , forgotPassword , resetPassword} from '../controller/auth.controller.js';
+import express from "express";
+import {
+  signup,
+  login,
+  logout,
+  verifyEmail,
+  forgotPassword,
+  resetPassword,
+  checkAuth,
+} from "../controller/auth.controller.js";
+import {verifyToken} from "../middleware/verifyToken.middleware.js";
 
 const router = express.Router();
 
-router.post("/signup" , signup);
+router.get("/check-auth", verifyToken, checkAuth);
 
-router.post("/verify-email" , verifyEmail);
+router.post("/signup", signup);
 
-router.post("/login" , login);
+router.post("/verify-email", verifyEmail);
 
-router.post("/logout" , logout);
+router.post("/login", login);
 
-router.post("/forgot-password" , forgotPassword);
+router.post("/logout", logout);
 
-router.post("/reset-password/:token" , resetPassword);
+router.post("/forgot-password", forgotPassword);
 
-export default router; 
+router.post("/reset-password/:token", resetPassword);
+
+export default router;
