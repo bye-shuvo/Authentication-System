@@ -3,6 +3,7 @@ import {
   VERIFICATION_EMAIL_TEMPLATE,
   WELCOME_EMAIL_TEMPLATE,
   RESET_PASSWORD_EMAIL_TEMPLATE,
+  RESET_PASSWORD_SUCCESS_EMAIL_TEMPLATE,
 } from "./emailTemplates.js";
 
 export const sendVerificationEmail = async (email, token) => {
@@ -57,3 +58,18 @@ export const sendResetPasswordEmail = async (email, url) => {
     console.log("Error while sending password reset email :", error.message);
   }
 };
+
+export const sendResetPasswordSuccessEmail = async (email) => {
+  const recipient = [{email}];
+  try {
+    await client.send({
+      from : sender ,
+      to : recipient , 
+      html : RESET_PASSWORD_SUCCESS_EMAIL_TEMPLATE,
+      subject : "Password Resst Successfully",
+      category : "Success Reset Password"
+    })
+  } catch (error) {
+    console.log("Error while sending password reset success email : " , error.message);
+  }
+}
