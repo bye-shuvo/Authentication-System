@@ -16,14 +16,14 @@ router.get("/check-auth", verifyToken, checkAuth);
 
 router.post("/signup", signup);
 
-router.post("/verify-email", verifyEmail);
+router.post("/verify-email", verifyToken , verifyEmail);
 
 router.post("/login", login);
 
-router.post("/logout", logout);
+router.post("/logout", verifyToken , logout);
 
-router.post("/forgot-password", forgotPassword);
+router.post("/forgot-password", verifyToken , forgotPassword);
 
-router.post("/reset-password/:token", resetPassword);
+router.post("/reset-password/:token", verifyToken , resetPassword);
 
 export default router;

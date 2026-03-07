@@ -52,6 +52,7 @@ export const verifyEmail = async (req, res) => {
   const { token } = req.body;
   try {
     const user = await User.findOne({
+      _id : req.userId ,
       verificationToken: token,
       verificationTokenExpiresAt: { $gt: Date.now() },
     });
@@ -123,6 +124,9 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
+    const user = await User.findById(req.userId);
+    if(!user) return res.status(400).json({success : false , message : "Invalid Token"});
+
     res.clearCookie("token");
     res.status(200).json({ success: true, message: "Logged out successfully" });
   } catch (error) {
@@ -133,7 +137,7 @@ export const logout = async (req, res) => {
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ _id: req.userId , email });
 
     if (!user)
       return res
@@ -166,6 +170,7 @@ export const resetPassword = async (req, res) => {
 
   try {
     const user = await User.findOne({
+      _id : req.userId ,
       resetPasswordToken: token,
       resetPasswordTokenExpiresAt: { $gt: Date.now() },
     });
